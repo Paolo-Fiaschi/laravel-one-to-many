@@ -1,0 +1,32 @@
+//
+//
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+header,
+footer,
+main{
+    background-color: green;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    min-height: 80vh;
+    background-color: white;
+    flex-direction: column;
+    ul{
+
+        list-style-type: none;
+        li{
+            padding: 20px;
+        }
+    }
+}
+footer{
+    background-color: red;
+}
+
