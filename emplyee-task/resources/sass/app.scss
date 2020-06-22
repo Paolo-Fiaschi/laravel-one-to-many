@@ -25,6 +25,10 @@ main{
             padding: 20px;
         }
     }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
 }
 footer{
     background-color: red;

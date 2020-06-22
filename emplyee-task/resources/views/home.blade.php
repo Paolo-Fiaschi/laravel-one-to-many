@@ -6,9 +6,9 @@
         <ul>
         @foreach ($tasks as $task)
             <li>
-                NAME: <a href="#"><h3>{{$task['name']}}</h3></a>
-                DESCRIPTION: <p>{{$task['description']}}</p>
-                DEADLINE: <p>{{$task['deadline']}}</p>
+                NAME: <a href="{{route('show', $task['id'])}}"><h3>{{$task['name']}}</h3></a>
+                {{-- DESCRIPTION: <p>{{$task['description']}}</p>
+                DEADLINE: <p>{{$task['deadline']}}</p> --}}
                 <small>{{$task['employee']['firstname']}} {{$task['employee']['lastname']}}</small>
             </li>
             @endforeach
