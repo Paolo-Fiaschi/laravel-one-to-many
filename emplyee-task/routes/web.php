@@ -10,3 +10,6 @@ Route::post('/update/{id}', 'TasksController@update') -> name('update');
 Route::get('/create', 'TasksController@create') -> name('create');
 Route::post('/store', 'TasksController@store') -> name('store');
 
+Route::get('/employee', 'EmployeeController@index') -> name('employeeHome');
+
+
