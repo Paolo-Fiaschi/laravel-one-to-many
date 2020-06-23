@@ -3,6 +3,7 @@
 @section('content')
     <main class="">
         <h1>TASKS</h1>
+        <button type="button"><a href="{{route('create')}}">Create New Task</a></button>
         <ul>
         @foreach ($tasks as $task)
             <li>
