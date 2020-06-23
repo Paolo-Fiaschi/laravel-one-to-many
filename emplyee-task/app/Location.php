@@ -8,8 +8,8 @@ class Location extends Model
 {
     protected $table = 'locations';
 
-    public function locations()
+    public function employees()
     {
-
+        return $this->belongsToMany(Employee::class);
     }
 }

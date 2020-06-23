@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Task;
 use App\Employee;
+use App\Location;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -15,7 +16,8 @@ class TasksController extends Controller
     public function show($id)
     {
         $task = Task::findOrFail($id);
-        return view('show', compact('task'));
+        $employees = Employee::all();
+        return view('show', compact('task', 'employees'));
     }
     public function delete($id)
     {
@@ -27,7 +29,8 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($id);
         $employees = Employee::all();
-        return view('edit', compact('task', 'employees'));
+        $locations = Location::all();
+        return view('edit', compact('task', 'employees', 'locations'));
     }
     public function update(Request $request, $id)
     {
@@ -36,10 +39,21 @@ class TasksController extends Controller
             'name' => 'required',
             'description' => 'required',
             'deadline' => 'required',
-            'employee_id' => 'required'
+            'employee_id' => 'required',
+            'locations' => 'required'
         ]);
         // dd($validatedData);
-        Task::whereId($id) -> update($validatedData);
+        // Task::whereId($id) -> update($validatedData);
+        $task = Task::findOrFail($id);
+        $task['name'] = $validatedData['name'];
+        $task['description'] = $validatedData['description'];
+        $task['deadline'] = $validatedData['deadline'];
+        $task['employee_id'] = $validatedData['employee_id'];
+
+        $task -> save();
+
+        $task -> employee -> locations() -> sync($validatedData['locations']);
+
         return redirect() -> route('home');
     }
     public function create()

@@ -40,6 +40,19 @@
                 @endforeach
             </select>
 
+            <label for="locations[]">LOCATIONS</label>
+            @foreach ($locations as $location)
+                <div>
+                    <input class="checkbox" type="checkbox" name="locations[]" value="{{$location['id']}}"
+                        @foreach ($employee -> locations as $cityLocation)
+                            @if ($location -> id === $cityLocation['id'])
+                                checked
+                            @endif
+                        @endforeach
+                    >{{$location['city']}}
+                </div>
+            @endforeach
+
             <button type="submit" name="submit" value="update">UPDATE</button>
         </form>
     </main>

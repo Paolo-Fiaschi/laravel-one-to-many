@@ -11,6 +11,7 @@
                 {{-- DESCRIPTION: <p>{{$task['description']}}</p>
                 DEADLINE: <p>{{$task['deadline']}}</p> --}}
                 <small>{{$task['employee']['firstname']}} {{$task['employee']['lastname']}}</small>
+
             </li>
             @endforeach
         </ul>
