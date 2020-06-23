@@ -36,6 +36,13 @@
                 </option>
                 @endforeach
             </select>
+            <label for="locations[]">LOCATIONS</label>
+            @foreach ($locations as $location)
+                <div>
+                    <input class="checkbox" type="checkbox" name="locations[]" value="{{$location['id']}}"
+                    >{{$location['city']}}
+                </div>
+            @endforeach
 
             <button type="submit" name="submit" value="update">CREATE</button>
         </form>

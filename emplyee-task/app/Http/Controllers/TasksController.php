@@ -59,8 +59,10 @@ class TasksController extends Controller
     public function create()
     {
         $employees = Employee::all();
+        $locations = Location::all();
+
         // $tasks = Task::all();
-        return view('create', compact('employees'));
+        return view('create', compact('employees', 'locations'));
     }
     public function store(Request $request)
     {
@@ -69,7 +71,9 @@ class TasksController extends Controller
             'name' => 'required',
             'description' => 'required',
             'deadline' => 'required',
-            'employee_id' => 'required'
+            'employee_id' => 'required',
+            'locations' => 'required'
+
         ]);
         $task = new Task;
         $task['name'] = $validatedData['name'];
@@ -78,6 +82,8 @@ class TasksController extends Controller
         $task['employee_id'] = $validatedData['employee_id'];
 
         $task -> save();
+        $task -> employee -> locations() -> sync($validatedData['locations']);
+
         // dd($validatedData);
         return redirect() -> route('home');
     }

@@ -12,7 +12,7 @@
                 <small>LOCATION:
                     <ul>
                         @foreach ($task -> employee -> locations as $location)
-                        <li>{{$location -> city}}</li>
+                    <li>{{$location -> city}}<br>{{$location -> street}}<br>{{$location -> state}}</li>
                         @endforeach
                     </ul>
                 </small>
